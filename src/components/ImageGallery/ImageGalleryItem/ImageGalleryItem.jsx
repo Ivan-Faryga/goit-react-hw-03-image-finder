@@ -1,11 +1,23 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const ImageGalleryItem = ({ image }) => {
+const ImageGalleryItem = ({ image, onClick }) => {
   return (
     <li className="ImageGalleryItem">
-      <img src={image.webformatURL} alt="" className="ImageGalleryItem-image" />
+      <img
+        src={image.webformatURL}
+        alt=""
+        className="ImageGalleryItem-image"
+        onClick={onClick}
+        data-img={image.largeImageURL}
+      />
     </li>
   );
+};
+
+ImageGalleryItem.propTypes = {
+  image: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ImageGalleryItem;
