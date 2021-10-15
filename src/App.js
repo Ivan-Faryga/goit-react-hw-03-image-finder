@@ -32,10 +32,12 @@ class App extends Component {
       this.downloadImages();
     }
 
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: "smooth",
-    });
+    if (prevState.page !== this.state.page && this.state.page !== 2) {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "smooth",
+      });
+    }
   }
 
   handleSubmit = (searchData) => {
