@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import ImageGalleryItem from "./ImageGalleryItem/ImageGalleryItem";
 
 const ImageGallery = ({ images, onClick }) => {
+  // console.log(images);
   return (
     <ul className="ImageGallery">
       {images.map((image) => (
@@ -14,6 +15,7 @@ const ImageGallery = ({ images, onClick }) => {
 
 ImageGallery.propTypes = {
   images: PropTypes.array.isRequired,
+  // image: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 

@@ -9,6 +9,11 @@ import { fetchPictures } from "./services/apiServise";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// ("idle");
+// ("pending");
+// ("resolved");
+// ("rejected");
+
 class App extends Component {
   state = {
     query: "",
@@ -54,6 +59,7 @@ class App extends Component {
           page: prevState.page + 1,
         }));
       })
+      .catch((error) => this.setState({ error }))
       .finally(() => this.toggleLoader());
   };
 
