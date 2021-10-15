@@ -42,21 +42,19 @@ class App extends Component {
     this.toggleLoader();
 
     fetchPictures(query, page)
-      .then((response) =>
-        this.setState((prevState) => ({
+      .then((response) => {
+        if (response.length === 0) {
+          return toast.error(`no results for ${this.state.query}`, {
+            theme: "colored",
+            autoClose: 4000,
+          });
+        }
+        return this.setState((prevState) => ({
           images: [...prevState.images, ...response],
           page: prevState.page + 1,
-        }))
-      )
-      // .catch((error) => toast.error(`no results for ${this.state.query}`))
+        }));
+      })
       .finally(() => this.toggleLoader());
-
-    if (this.state.images.length === 0) {
-      return toast.error(`no results for ${this.state.query}`, {
-        theme: "colored",
-        autoClose: 4000,
-      });
-    }
   };
 
   resetState = () => {
